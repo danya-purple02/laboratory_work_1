@@ -8,9 +8,20 @@ using namespace std;
 void main()
 {
 	srand(time(NULL));
-
 	//* task 2: initialization randomized array *
-	cout << "* task 2: initialization randomized array *" << endl << endl;
+	cout << "* task 2: initialization randomized array *" << endl;
+	int A[20];
+
+	cout << endl << "your array:" << endl << "[ ";
+	for (int i = 0; i < 20; i++)
+	{
+		A[i] = rand() % 202;
+		cout << A[i] << " ";
+	}
+	cout << "]" << endl << endl << endl;
+
+	//* task 3: initialization randomized dynamic array *
+	cout << "* task 3: initialization randomized dynamic array *" << endl << endl;
 	int i = 0;
 	cout << "input array size" << endl;
 	cin >> i;
@@ -30,7 +41,7 @@ void main()
 			cout << *m << " ";
 		}
 		i--, m--;
-		cout << "]" << endl << endl;
+		cout << "]" << endl << endl << endl;
 	}
 
 	//* task 1: difference between max and min element *
@@ -44,12 +55,12 @@ void main()
 		if (*m >= max_m) 
 		{
 			max_m = *m;
-			max_p = i;
+			max_p = i + 1;
 		}
 		if (*m <= min_m) 
 		{
 			min_m = *m;
-			max_p = i;
+			min_p = i + 1;
 		}
 	}
 
