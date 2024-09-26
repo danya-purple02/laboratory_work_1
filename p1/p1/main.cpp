@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <iostream>
 #include <time.h>
+#include <iomanip>
 using namespace std;
 
 void main()
@@ -22,12 +23,12 @@ void main()
 
 	//* task 3: initialization randomized dynamic array *
 	cout << "* task 3: initialization randomized dynamic array *" << endl << endl;
-	int i = 0;
+	int z = 0;
 	cout << "input array size" << endl;
-	cin >> i;
-	int* m = (int*)malloc(sizeof(int) * i);
+	cin >> z;
+	int* m = (int*)malloc(sizeof(int) * z);
 
-	if (i == 0)
+	if (z == 0)
 	{
 		cout << endl << "array size cannot be zero" << endl;
 		return;
@@ -35,12 +36,12 @@ void main()
 	else
 	{
 		cout << endl << "your array:" << endl << "[ ";
-		for (int z = 0; z < i; z++, m++)
+		for (int i = 0; i < z; i++, m++)
 		{
 			*m = rand() % 202;
 			cout << *m << " ";
 		}
-		i--, m--;
+		m--;
 		cout << "]" << endl << endl << endl;
 	}
 
@@ -50,21 +51,57 @@ void main()
 	int max_m = 0, min_m = 1000;
 	int max_p = 0, min_p = 0;
 
-	for (; i != 0; i--, m--)
+	for (; z != 0; z--, m--)
 	{
 		if (*m >= max_m) 
 		{
 			max_m = *m;
-			max_p = i + 1;
+			max_p = z;
 		}
 		if (*m <= min_m) 
 		{
 			min_m = *m;
-			min_p = i + 1;
+			min_p = z;
 		}
 	}
 
 	cout << "greatest element is " << max_p << " and it = " << max_m << endl;
 	cout << "smallest element is " << min_p << " and it = " << min_m << endl;
 	cout << "difference = " << max_m - min_m << endl;
+	cout << endl << endl;
+	//* task 4: row and column sums *
+	cout << "* task 4: row and column sums *" << endl << endl;
+
+	int N[5][5];
+	int row_sum = 0, column_sum = 0;
+
+	cout << "generated matrix: " << endl;
+	for (int i = 0; i < 5; i++) 
+	{
+		if (i == 0) cout << "/";
+		if (i != 0 && i != 4) cout << "|";
+		if (i == 4) cout << "\\";
+		for (int j = 0; j < 5; j++)
+		{
+			N[i][j] = rand() % 202;
+			cout << setw(7) << N[i][j] << " ";
+			row_sum += N[i][j];
+		}
+		if (i == 0) cout << "\\";
+		if (i != 0 && i != 4) cout << "|";
+		if (i == 4) cout << "/";
+		cout << setw(7) << row_sum << endl;
+		row_sum = 0;
+	}
+	cout << endl;
+	for (int j = 0; j < 5; j ++) 
+	{
+		for (int i = 0; i < 5; i++) 
+		{
+			column_sum += N[i][j];
+		}
+		cout << setw(8) << column_sum;
+		column_sum = 0;
+	}
+	cout << setw(9) << "sum" << endl << endl;
 }
