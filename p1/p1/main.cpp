@@ -69,6 +69,7 @@ void main()
 	cout << "smallest element is " << min_p << " and it = " << min_m << endl;
 	cout << "difference = " << max_m - min_m << endl;
 	cout << endl << endl;
+
 	//* task 4: row and column sums *
 	cout << "* task 4: row and column sums *" << endl << endl;
 
@@ -104,4 +105,110 @@ void main()
 		column_sum = 0;
 	}
 	cout << setw(9) << "sum" << endl << endl;
+
+	//* task 5: search in struct *
+	cout << "* task 5: search in struct *" << endl << endl;
+
+	string l_names[] = {"Makarov", "Vidyaev", "Usov", "Kazakov", "Kuzmin", "Jiganov", "Yurov", "Pilnov"};
+	string names[] = {"Daniil", "Alexander", "Alexey", "Vladimir", "Denis", "Anton", "Maksim", "Nikita"};
+	string faculty[] = {"FVT", "FITE", "PTET", "Ist-Fil", "PED", "YUR-Fak", "Econom", "MED"};
+	string grade_book_num[] = {"23VVV1312", "21VI32", "24IPO231", "19LL13234", "22NS13", "23ZMOS412", "23ZFPB11", "17KE242"};
+
+	struct student
+	{
+		string famil, name, facult, Nomzach;
+	} stud[10], tmp_stud;
+	int x = 0;
+	int temp_type = 0;
+	string temp_value;
+	bool res = 0;
+
+	cout << "All students:" << endl << setw(20) << "last name" << setw(20) << "name" << setw(20) << "faculty" << setw(20) << "gr book num" << endl << endl;
+
+	for (int i = 0; i < 10; i++)
+	{
+		x = rand() % 8;
+		stud[i].famil = l_names[x];
+		x = rand() % 8;
+		stud[i].name = names[x];
+		x = rand() % 8;
+		stud[i].facult = faculty[x];
+		x = rand() % 8;
+		stud[i].Nomzach = grade_book_num[x];
+		cout << setw(20) << stud[i].famil << setw(20) << stud[i].name << setw(20) << stud[i].facult << setw(20) << stud[i].Nomzach << endl;
+	}
+
+	cout << endl << "enter search parameter" << endl << "(last name = 1 | name = 2 | faculty = 3 | grade book number = 4):" << endl;
+	cin >> temp_type;
+	cout << endl << "enter search value:" << endl;
+	cin >> temp_value;
+	switch (temp_type) 
+	{
+		case 1:
+		{
+			for (int i = 0; i < 5; i++) 
+			{
+				if (stud[i].famil == temp_value)
+				{
+					tmp_stud = stud[i];
+					res = 1;
+					break;
+				}
+			}
+			break;
+		}
+		case 2:
+		{
+			for (int i = 0; i < 5; i++)
+			{
+				if (stud[i].name == temp_value)
+				{
+					tmp_stud = stud[i];
+					res = 1;
+					break;
+				}
+			}
+			break;
+		}
+		case 3:
+		{
+			for (int i = 0; i < 5; i++)
+			{
+				if (stud[i].facult == temp_value)
+				{
+					tmp_stud = stud[i];
+					res = 1;
+					break;
+				}
+			}
+			break;
+		}
+		case 4:
+		{
+			for (int i = 0; i < 5; i++)
+			{
+				if (stud[i].Nomzach == temp_value)
+				{
+					tmp_stud = stud[i];
+					res = 1;
+					break;
+				}
+			}
+			break;
+		}
+		default:
+		{
+			cout << "error. must type 1 to 4." << endl << endl;
+			return;
+		}
+	}
+
+	if (res == 0) 
+	{
+		cout << endl << "error. check entered value, it's wrong" << endl << endl;
+	}
+	else 
+	{
+		cout << endl << "Information about student:" << endl << "last name: " << tmp_stud.famil << endl << "name: " << tmp_stud.name << endl << "faculty: " << tmp_stud.facult << endl << "grade book number: " << tmp_stud.Nomzach << endl << endl;
+	}
 }
