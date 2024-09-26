@@ -19,6 +19,7 @@ void main()
 	if (i == 0)
 	{
 		cout << endl << "array size cannot be zero" << endl;
+		return;
 	}
 	else
 	{
@@ -28,8 +29,31 @@ void main()
 			*m = rand() % 202;
 			cout << *m << " ";
 		}
+		i--, m--;
 		cout << "]" << endl << endl;
 	}
 
+	//* task 1: difference between max and min element *
+	cout << "* task 1: difference between max and min element *" << endl << endl;
 
+	int max_m = 0, min_m = 1000;
+	int max_p = 0, min_p = 0;
+
+	for (; i != 0; i--, m--)
+	{
+		if (*m >= max_m) 
+		{
+			max_m = *m;
+			max_p = i;
+		}
+		if (*m <= min_m) 
+		{
+			min_m = *m;
+			max_p = i;
+		}
+	}
+
+	cout << "greatest element is " << max_p << " and it = " << max_m << endl;
+	cout << "smallest element is " << min_p << " and it = " << min_m << endl;
+	cout << "difference = " << max_m - min_m << endl;
 }
