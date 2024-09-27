@@ -53,12 +53,12 @@ void main()
 
 	for (; z != 0; z--, m--)
 	{
-		if (*m >= max_m) 
+		if (*m >= max_m)
 		{
 			max_m = *m;
 			max_p = z;
 		}
-		if (*m <= min_m) 
+		if (*m <= min_m)
 		{
 			min_m = *m;
 			min_p = z;
@@ -77,7 +77,7 @@ void main()
 	int row_sum = 0, column_sum = 0;
 
 	cout << "generated matrix: " << endl;
-	for (int i = 0; i < 5; i++) 
+	for (int i = 0; i < 5; i++)
 	{
 		if (i == 0) cout << "/";
 		if (i != 0 && i != 4) cout << "|";
@@ -95,9 +95,9 @@ void main()
 		row_sum = 0;
 	}
 	cout << endl;
-	for (int j = 0; j < 5; j ++) 
+	for (int j = 0; j < 5; j++)
 	{
-		for (int i = 0; i < 5; i++) 
+		for (int i = 0; i < 5; i++)
 		{
 			column_sum += N[i][j];
 		}
@@ -109,10 +109,10 @@ void main()
 	//* task 5: search in struct *
 	cout << "* task 5: search in struct *" << endl << endl;
 
-	string l_names[] = {"Makarov", "Vidyaev", "Usov", "Kazakov", "Kuzmin", "Jiganov", "Yurov", "Pilnov"};
-	string names[] = {"Daniil", "Alexander", "Alexey", "Vladimir", "Denis", "Anton", "Maksim", "Nikita"};
-	string faculty[] = {"FVT", "FITE", "PTET", "Ist-Fil", "PED", "YUR-Fak", "Econom", "MED"};
-	string grade_book_num[] = {"23VVV1312", "21VI32", "24IPO231", "19LL13234", "22NS13", "23ZMOS412", "23ZFPB11", "17KE242"};
+	string l_names[] = { "Makarov", "Vidyaev", "Usov", "Kazakov", "Kuzmin", "Jiganov", "Yurov", "Pilnov" };
+	string names[] = { "Daniil", "Alexander", "Alexey", "Vladimir", "Denis", "Anton", "Maksim", "Nikita" };
+	string faculty[] = { "FVT", "FITE", "PTET", "Ist-Fil", "PED", "YUR-Fak", "Econom", "MED" };
+	string grade_book_num[] = { "23VVV1312", "21VI32", "24IPO231", "19LL13234", "22NS13", "23ZMOS412", "23ZFPB11", "17KE242" };
 
 	struct student
 	{
@@ -121,7 +121,6 @@ void main()
 	int x = 0;
 	int temp_type = 0;
 	string temp_value;
-	bool res = 0;
 	int c = 0;
 
 	cout << "All students:" << endl << setw(20) << "last name" << setw(20) << "name" << setw(20) << "faculty" << setw(20) << "gr book num" << endl << endl;
@@ -143,74 +142,70 @@ void main()
 	cin >> temp_type;
 	cout << endl << "enter search value:" << endl;
 	cin >> temp_value;
-	switch (temp_type) 
+	switch (temp_type)
 	{
-		case 1:
+	case 1:
+	{
+		for (int i = 0; i < 10; i++)
 		{
-			for (int i = 0; i < 10; i++)
+			if (stud[i].famil == temp_value)
 			{
-				if (stud[i].famil == temp_value)
-				{
-					tmp_stud[c] = stud[i];
-					res = 1;
-					c++;
-				}
+				tmp_stud[c] = stud[i];
+				c++;
 			}
-			break;
 		}
-		case 2:
+		break;
+	}
+	case 2:
+	{
+		for (int i = 0; i < 10; i++)
 		{
-			for (int i = 0; i < 10; i++)
+			if (stud[i].name == temp_value)
 			{
-				if (stud[i].name == temp_value)
-				{
-					tmp_stud[c] = stud[i];
-					res = 1;
-					break;
-				}
+				tmp_stud[c] = stud[i];
+				c++;
 			}
-			break;
 		}
-		case 3:
+		break;
+	}
+	case 3:
+	{
+		for (int i = 0; i < 10; i++)
 		{
-			for (int i = 0; i < 10; i++)
+			if (stud[i].facult == temp_value)
 			{
-				if (stud[i].facult == temp_value)
-				{
-					tmp_stud[c] = stud[i];
-					res = 1;
-					c++;
-				}
+				tmp_stud[c] = stud[i];
+				c++;
 			}
-			break;
 		}
-		case 4:
+		break;
+	}
+	case 4:
+	{
+		for (int i = 0; i < 10; i++)
 		{
-			for (int i = 0; i < 10; i++)
+			if (stud[i].Nomzach == temp_value)
 			{
-				if (stud[i].Nomzach == temp_value)
-				{
-					tmp_stud[c] = stud[i];
-					res = 1;
-					c++;
-				}
+				tmp_stud[c] = stud[i];
+				c++;
 			}
-			break;
 		}
-		default:
-		{
-			cout << "error. must type 1 to 4." << endl << endl;
-			return;
-		}
+		break;
+	}
+	default:
+	{
+		cout << "error. must type 1 to 4." << endl << endl;
+		return;
+	}
 	}
 
-	if (res == 0) 
+	if (c <= 0)
 	{
 		cout << endl << "error. check entered value, it's wrong" << endl << endl;
 	}
-	else 
+	else
 	{
-		for (int i = 0; i < c; i++) 
+		for (int i = 0; i < c; i++)
 		{
 			cout << endl << "Information about student:" << endl << "last name: " << tmp_stud[i].famil << endl << "name: " << tmp_stud[i].name << endl << "faculty: " << tmp_stud[i].facult << endl << "grade book number: " << tmp_stud[i].Nomzach << endl << endl;
 		}
