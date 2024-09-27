@@ -11,7 +11,7 @@ void main()
 	srand(time(NULL));
 	//* task 2: initialization randomized array *
 	cout << "* task 2: initialization randomized array *" << endl;
-	int A[20];
+	int A[20] = {};
 
 	cout << endl << "your array:" << endl << "[ ";
 	for (int i = 0; i < 20; i++)
@@ -117,11 +117,12 @@ void main()
 	struct student
 	{
 		string famil, name, facult, Nomzach;
-	} stud[10], tmp_stud;
+	} stud[10], tmp_stud[10];
 	int x = 0;
 	int temp_type = 0;
 	string temp_value;
 	bool res = 0;
+	int c = 0;
 
 	cout << "All students:" << endl << setw(20) << "last name" << setw(20) << "name" << setw(20) << "faculty" << setw(20) << "gr book num" << endl << endl;
 
@@ -146,24 +147,24 @@ void main()
 	{
 		case 1:
 		{
-			for (int i = 0; i < 5; i++) 
+			for (int i = 0; i < 10; i++)
 			{
 				if (stud[i].famil == temp_value)
 				{
-					tmp_stud = stud[i];
+					tmp_stud[c] = stud[i];
 					res = 1;
-					break;
+					c++;
 				}
 			}
 			break;
 		}
 		case 2:
 		{
-			for (int i = 0; i < 5; i++)
+			for (int i = 0; i < 10; i++)
 			{
 				if (stud[i].name == temp_value)
 				{
-					tmp_stud = stud[i];
+					tmp_stud[c] = stud[i];
 					res = 1;
 					break;
 				}
@@ -172,26 +173,26 @@ void main()
 		}
 		case 3:
 		{
-			for (int i = 0; i < 5; i++)
+			for (int i = 0; i < 10; i++)
 			{
 				if (stud[i].facult == temp_value)
 				{
-					tmp_stud = stud[i];
+					tmp_stud[c] = stud[i];
 					res = 1;
-					break;
+					c++;
 				}
 			}
 			break;
 		}
 		case 4:
 		{
-			for (int i = 0; i < 5; i++)
+			for (int i = 0; i < 10; i++)
 			{
 				if (stud[i].Nomzach == temp_value)
 				{
-					tmp_stud = stud[i];
+					tmp_stud[c] = stud[i];
 					res = 1;
-					break;
+					c++;
 				}
 			}
 			break;
@@ -209,6 +210,9 @@ void main()
 	}
 	else 
 	{
-		cout << endl << "Information about student:" << endl << "last name: " << tmp_stud.famil << endl << "name: " << tmp_stud.name << endl << "faculty: " << tmp_stud.facult << endl << "grade book number: " << tmp_stud.Nomzach << endl << endl;
+		for (int i = 0; i < c; i++) 
+		{
+			cout << endl << "Information about student:" << endl << "last name: " << tmp_stud[i].famil << endl << "name: " << tmp_stud[i].name << endl << "faculty: " << tmp_stud[i].facult << endl << "grade book number: " << tmp_stud[i].Nomzach << endl << endl;
+		}
 	}
 }
