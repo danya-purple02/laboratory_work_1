@@ -134,7 +134,6 @@ void main()
     int temp_type = 0;
     char temp_value[20];
     int c = 0;
-    int res = 0;
 
     cout << "All students:" << endl << setw(20) << "last name" << setw(20) << "name" << setw(20) << "faculty" << setw(20) << "gr book num" << endl << endl;
     for (int i = 0; i < s_num; i++)
@@ -160,79 +159,47 @@ void main()
     {
         for (int i = 0; i < s_num; i++)
         {
-            for (int j = 0; j < 20; j++)
-            {
-                if (stud[i].famil[j] == temp_value[j])
-                {
-                    res++;
-                }
-            }
-            if (res > 3)
+            if ((strcmp(stud[i].famil, temp_value)) == 0)
             {
                 tmp_stud[c] = stud[i];
                 c++;
             }
-            res = 0;
         }
         break;
     }
     case 2:
     {
-        for (int i = 0; i < s_num; i++)
+        for (int i = 0; i < s_num; )
         {
-            for (int j = 0; j < 20; j++)
-            {
-                if (stud[i].name[j] == temp_value[j])
-                {
-                    res++;
-                }
-            }
-            if (res > 3)
+            if (strcmp(stud[i].name, temp_value))
             {
                 tmp_stud[c] = stud[i];
                 c++;
             }
-            res = 0;
         }
         break;
     }
     case 3:
     {
-        for (int i = 0; i < s_num; i++)
+        for (int i = 0; i < s_num; )
         {
-            for (int j = 0; j < 20; j++)
-            {
-                if (stud[i].facult[j] == temp_value[j])
-                {
-                    res++;
-                }
-            }
-            if (res > 3)
+            if (strcmp(stud[i].facult, temp_value))
             {
                 tmp_stud[c] = stud[i];
                 c++;
             }
-            res = 0;
         }
         break;
     }
     case 4:
     {
-        for (int i = 0; i < s_num; i++)
+        for (int i = 0; i < s_num; )
         {
-            for (int j = 0; j < 20; j++)
-            {
-                if (stud[i].Nomzach[j] == temp_value[j])
-                {
-                    res++;
-                }
-            }
-            if (res > 3)
+            if (strcmp(stud[i].Nomzach, temp_value))
             {
                 tmp_stud[c] = stud[i];
                 c++;
             }
-            res = 0;
         }
         break;
     }
